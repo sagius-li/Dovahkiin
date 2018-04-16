@@ -1,0 +1,87 @@
+{
+    "dataServiceUrl": "//localhost:6768/api/",
+    "portalAdminGuid": "7fb2b853-24f0-4498-9534-4e10589723c4",
+    "loginUserAttributes": [
+        "DisplayName",
+        "AccountName",
+        "ocgConfigurationXML"
+    ],
+    "datetimeFormat": "MM/d/yyyy hh:mm:ss tt",
+    "datetimeDBFormat": "MMM d yyyy h:mmtt",
+    "displayedDateTimeFormat": "MM/d/yyyy",
+    "supportedLanguages": [
+        {
+            "code": [
+                "en-US",
+                "en"
+            ],
+            "label": "English",
+            "route": "en"
+        },
+        {
+            "code": [
+                "de-DE",
+                "de"
+            ],
+            "label": "Deutsch",
+            "route": "de"
+        },
+        {
+            "code": [
+                "zh-CN",
+                "cn"
+            ],
+            "label": "中文",
+            "route": "cn"
+        }
+    ],
+    "sidebarItems": [
+        {
+            "path": "dashboard",
+            "title": "dashboard",
+            "icon": "dashboard"
+        },
+        {
+            "path": "profile",
+            "title": "userProfile",
+            "icon": "person"
+        },
+        {
+            "path": "resources",
+            "title": "allResources",
+            "icon": "apps"
+        },
+        {
+            "path": "newitem",
+            "title": "newItems",
+            "icon": "add_to_photos",
+            "items": [
+                {
+                    "path": "newuser",
+                    "title": "newUser",
+                    "icon": "person_add"
+                },
+                {
+                    "path": "newgroup",
+                    "title": "newGroup",
+                    "icon": "group_add"
+                }
+            ]
+        },
+        {
+            "path": "notifications",
+            "title": "notifications",
+            "icon": "notifications"
+        },
+        {
+            "path": "settings",
+            "title": "settings",
+            "icon": "settings"
+        }
+    ],
+    "intervalT": 50,
+    "intervalS": 100,
+    "intervalN": 300,
+    "intervalL": 500,
+    "intervalX": 1000
+}

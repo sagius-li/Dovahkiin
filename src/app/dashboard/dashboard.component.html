@@ -1,0 +1,77 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <img width="60" fxFlex="nogrow" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+
+  <!-- using out-of-box i18n -->
+  <!-- <h1 fxFlex="nogrow" i18n="main title|title on the mail page@@mainTitle">
+    Welcome to {{title}}! ({{languageId}})
+  </h1> -->
+
+  <!-- using angular-l10n -->
+  <h1 fxFlex="nogrow">
+    {{'greeting'|translate:lang}} {{title}}! ({{languageId}})
+  </h1>
+
+</div>
+
+<h3>{{languageExample}}</h3>
+<hr>
+
+<ng-template ngFor let-language [ngForOf]="languages">
+  <span *ngIf="language.code.indexOf(languageId)<0">
+
+    <!-- using out-of-box i18n -->
+    <!-- <a href="/{{language.route}}/">{{language.label}}</a> -->
+
+    <!-- using angular-l10n -->
+    <a [routerLink]="" (click)="onChangeLanguage(language.route)">{{language.label}}</a>
+
+  </span>
+  <span *ngIf="language.code.indexOf(languageId)>=0">{{language.label}} </span>
+</ng-template>
+
+<br>
+<br>
+
+<h3>Data Service Example</h3>
+<hr>
+<button (click)="onFetchUsers()">Fetch Users</button>
+<div *ngIf="users">
+  <ul>
+    <li *ngFor="let user of users">
+      <i class="fa fa-user-circle"></i>
+      <i class="material-icons" style="color:orange;font-size:18px;vertical-align:sub;">face</i> {{user.DisplayName}} ({{user.Attributes.AccountName.Value}})
+    </li>
+  </ul>
+</div>
+
+<br>
+<br>
+
+<h3>Material Design Example</h3>
+<hr>
+<form fxLayout="row wrap" fxLayoutGap="20px" style="margin-bottom: 20px;">
+  <mat-input-container fxFlex="1 1 40%" floatPlaceholder="auto">
+    <input matInput type="text" placeholder="{{'firstName'|translate:lang}}">
+    <mat-hint>Errors appear instantly!</mat-hint>
+  </mat-input-container>
+  <mat-input-container fxFlex="1 1 40%" floatPlaceholder="auto">
+    <input matInput formControlName="" type="text" placeholder="{{'lastName'|translate:lang}}">
+  </mat-input-container>
+  <mat-input-container fxFlex="0 1 40%" floatPlaceholder="auto">
+    <input matInput formControlName="" type="text" placeholder="{{'accountName'|translate:lang}}">
+  </mat-input-container>
+</form>
+
+<br>
+<br>
+
+<h3>Dragula Examples</h3>
+<hr>
+<div fxLayout="row" fxLayoutGap="20px">
+  <ul [dragula]='"bag-people"' [dragulaModel]='users' fxFlex="0 0 300px" style="background-color: lightyellow; height: 300px;">
+    <li *ngFor="let user of users" style="cursor: pointer;">{{user.DisplayName}}</li>
+  </ul>
+  <ul [dragula]='"bag-people"' [dragulaModel]='movedUsers' fxFlex="0 0 300px" style="background-color: lightblue; height: 300px;">
+    <li *ngFor="let user of movedUsers" style="cursor: pointer;">{{user.DisplayName}}</li>
+  </ul>
+</div>

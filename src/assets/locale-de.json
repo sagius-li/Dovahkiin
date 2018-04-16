@@ -1,0 +1,15 @@
+{
+    "greeting": "Willkommen to Dovahkiin",
+    "languageExample": "Beispiel für Localization (mit angular-l10n)",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "accountName": "Benutzername",
+    "languageName": "Deutsch",
+    "languageKey": "1031",
+    "dashboard": "Dashboard",
+    "userProfile": "Benutzer Profil",
+    "allResources": "Ressourcen",
+    "newItems": "Neue Objekte",
+    "notifications": "Notifikationen",
+    "settings": "Einstellungen"
+}
