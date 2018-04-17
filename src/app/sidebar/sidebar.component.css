@@ -9,8 +9,11 @@
 .sidebar-filter .logo {
 	padding: 15px;
 }
-.sidebar-filter .logo img {
+.sidebar-filter .logo .fullImage {
 	max-height: 54px;
+}
+.sidebar-filter .logo .iconImage {
+	max-height: 46px;
 }
 
 .sidebar-filter .sidebar-seperator {

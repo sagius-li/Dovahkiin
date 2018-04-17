@@ -1,13 +1,15 @@
 <div class="sidebar-filter" fxLayout="column" fxLayoutAlign="start center">
   <div class="logo" fxFlex="none">
     <a routerLink="">
-        <img src="../../assets/img/ocglogoblack.png" />
-      </a>
+      <img class="fullImage" fxShow fxHide.lt-md="true" src="../../assets/img/ocglogoblack.png" />
+      <img class="iconImage" fxHide fxShow.lt-md="true" src="../../assets/img/favicon.png" />
+    </a>
   </div>
   <div class="sidebar-seperator" fxFlex="none"></div>
   <div class="sidebar-item" fxFlex="none" *ngFor="let item of sidebarItems">
-    <a [routerLink]="item.path">
-        <i class="material-icons">{{item.icon}}</i>{{item.title|translate:lang}}
-      </a>
+    <a [routerLink]="item.path" fxLayout="row">
+      <i class="material-icons" fxFlex="none">{{item.icon}}</i>
+      <div fxFlex="none" fxHide.lt-md="true">{{item.title|translate:lang}}</div>
+    </a>
   </div>
 </div>
