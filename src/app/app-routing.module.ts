@@ -1,13 +1,30 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router, RouterEvent } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { SplashComponent } from "./splash/splash.component";
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: SplashComponent,
     children: []
+  },
+  {
+    path: 'app',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: DashboardComponent
+      }
+    ]
   }
 ];
 
@@ -15,4 +32,10 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: RouterEvent) => {
+      let i = 0;
+    });
+  }
+}

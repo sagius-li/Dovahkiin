@@ -1,0 +1,14 @@
+<div class="wrapper" fxLayout="row" fxLayoutAlign="start stretch">
+  <div class="sidebar" fxFlex="0 0 260px" fxFlex.lt-md="0 0 60px">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div fxFlex="1 1 auto" fxLayout="column">
+    <div class="topbar" fxFlex="0 0 60px">
+
+    </div>
+    <div class="main" fxFlex="1 1 auto">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer" fxFlex="0 0 30px"></div>
+  </div>
+</div>

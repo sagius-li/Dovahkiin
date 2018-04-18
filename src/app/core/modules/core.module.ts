@@ -22,13 +22,13 @@ export function startup(startup: StartupService) {
     DataService,
     ConfigService,
     StartupService,
-    {
-      provide: APP_INITIALIZER,
-      // useFactory: (startup: StartupService) => () => startup.load(),
-      useFactory: startup,
-      deps: [StartupService],
-      multi: true
-    }
+    // {
+    //   provide: APP_INITIALIZER,
+    //   // useFactory: (startup: StartupService) => () => startup.load(),
+    //   useFactory: startup,
+    //   deps: [StartupService],
+    //   multi: true
+    // }
   ]
 })
 export class CoreModule { }

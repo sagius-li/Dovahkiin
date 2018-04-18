@@ -32,7 +32,7 @@ export class StartupService {
                         });
                     });
                 });
-            }, 2000);
+            }, 200);
         });
     }
 

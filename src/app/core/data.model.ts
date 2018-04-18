@@ -27,6 +27,7 @@ export class RMType {
     static named = new RMType("namedrm");
     static remote = new RMType("remoterm");
     static anonym = new RMType("anonymrm");
+    static paged = new RMType("pagedrm");
 }
 
 export class GPRight {
@@ -71,4 +72,10 @@ export class GPAttributeDef {
     IsRequired: boolean;
     Name: string;
     Type: string;
+}
+
+export class PagedResources {
+    HasMoreItems: boolean;
+    TotalCount: number;
+    Resources: Array<GPResource>;
 }

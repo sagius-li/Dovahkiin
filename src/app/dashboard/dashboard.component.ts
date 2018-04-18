@@ -4,7 +4,7 @@ import { DragulaService } from 'ng2-dragula';
 
 import { ConfigService } from '../core/services/config.service';
 import { DataService } from '../core/services/data.service';
-import { GPResource, RMType, GPRight, GPAttributeDef } from '../core/data.model';
+import { GPResource, RMType, GPRight, GPAttributeDef, PagedResources } from '../core/data.model';
 
 import { Language, LocaleService, TranslationService } from 'angular-l10n';
 
@@ -72,6 +72,16 @@ export class DashboardComponent implements OnInit {
       }, (error) => {
         console.log(error);
       });
+
+    /// Get Resource using pagedrm
+    // this.dataService.getResourceByQuery('/Person[starts-with(DisplayName,\'%\')]',
+    //   ['DisplayName', 'AccountName', 'Description', 'CreatedTime'], RMType.paged, false, 10, 10)
+    //   .then((data: PagedResources) => {
+    //     this.users = data.Resources;
+    //     console.log(data);
+    //   }, (error) => {
+    //     console.log(error);
+    //   });
 
     /// Create & Delete Resource
     // let resource: GPResource = {

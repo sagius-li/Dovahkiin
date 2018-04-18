@@ -14,12 +14,16 @@ import { AppComponent } from './app.component';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SplashComponent } from './splash/splash.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
+    SplashComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

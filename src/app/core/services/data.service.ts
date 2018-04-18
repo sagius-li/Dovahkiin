@@ -209,7 +209,7 @@ export class DataService {
 
     public getResourceByQuery(
         query: string, attributes: string[], rmType?: RMType, resolvRef: boolean = false,
-        count: number = -1, skip: number = 0, checkRights: boolean = true, connString?: string
+        count: number = 100, skip: number = 0, checkRights: boolean = true, connString?: string
     ) {
         let resourceManagerType: RMType = rmType ? rmType : RMType.user;
 
@@ -217,6 +217,11 @@ export class DataService {
         attributes.forEach((item) => {
             param = param.append('attributes', item);
         });
+
+        if (resourceManagerType === RMType.paged) {
+            param = param.append('count', String(count));
+            param = param.append('index', String(skip));
+        }
 
         if (resourceManagerType === RMType.reader) {
             param = param.append('requestorID', this.loginUser.ObjectID);
@@ -241,15 +246,21 @@ export class DataService {
             }
         }
 
+        let urlQuery = 'query';
+
         if (this.connection) {
-            if (resourceManagerType == RMType.user) {
+            if (resourceManagerType === RMType.user) {
                 resourceManagerType = RMType.named;
+                param = param.append('connection', this.connection);
+            }
+            if (resourceManagerType === RMType.paged) {
+                urlQuery = 'namedquery';
                 param = param.append('connection', this.connection);
             }
         }
 
         const url: string = this.buildServiceMethodUrl(
-            this.serviceUrl, resourceManagerType.toString(), resolvRef ? 'getresolved' : 'get', 'query');
+            this.serviceUrl, resourceManagerType.toString(), resolvRef ? 'getresolved' : 'get', urlQuery);
 
         return new Promise((resolve, reject) => {
             this.http.get(url, {
@@ -257,7 +268,10 @@ export class DataService {
                 withCredentials: true
             }).subscribe(
                 (data: Array<GPResource>) => {
-                    if (count < 0) {
+                    if (resourceManagerType === RMType.paged) {
+                        resolve(data);
+                    }
+                    else if (count < 0) {
                         resolve(data);
                     }
                     else {
